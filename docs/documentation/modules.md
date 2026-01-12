@@ -134,3 +134,60 @@ The default gitignore may be a good start for what files you can safely leave ou
 ### Submodules
 
 TSWoW submodules have no relation to git submodules, but you can of course implement one using the other if you wish.
+
+## Publishing Modules
+
+If you want to share your module with others and make it discoverable, there are a few conventions to follow.
+
+### GitHub Topic
+
+Add the `tswow-module` topic to your GitHub repository. This is how the library search discovers modules:
+
+1. Go to your repository on GitHub
+2. Click the gear icon next to "About" in the right sidebar
+3. Add `tswow-module` to the Topics field
+4. Save changes
+
+Your repository will be indexed within a few hours.
+
+### Repository Structure
+
+The library search supports two repository structures:
+
+#### Single Module Repository
+
+If your repository contains a single module, place the `datascripts/` or `livescripts/` folder at the repository root:
+
+```
+myname-mymodule/
+├── datascripts/
+├── livescripts/
+├── assets/
+└── README.md
+```
+
+#### Multi-Module Repository
+
+If your repository contains multiple modules, each top-level folder (that isn't an excluded name) is treated as a separate module:
+
+```
+module-library/
+├── myname-module-one/
+│   ├── datascripts/
+│   └── README.md
+├── myname-module-two/
+│   ├── datascripts/
+│   └── README.md
+└── README.md
+```
+
+**Note:** Certain common directory names are excluded from module detection: `.github`, `node_modules`, `docs`, `tests`, `src`, `lib`, `examples`, and similar development/tooling directories.
+
+### README Files
+
+Include README files to help users understand your modules:
+
+- **Repository README.md** - Explain the purpose of your repository, installation instructions, and an overview of what modules are included.
+- **Per-module README.md** - For multi-module repositories, include a README.md in each module folder explaining what that specific module does.
+
+README content is indexed for search, so descriptive documentation helps users find your modules.

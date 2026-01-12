@@ -21,3 +21,6 @@ This sections contains user-submitted tutorials, walkthroughs or example modules
 
 - [**Client <-> Server Communications: Example Messaging**](./example-messaging)
     - _Demo showcasing how to utilize ClientExtensions dll._
+
+- [**Library Search**](./library-search)
+    - _Find and share community-created TSWoW modules._
