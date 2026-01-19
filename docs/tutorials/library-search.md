@@ -4,19 +4,21 @@ title: Library Search
 nav_order: 5
 ---
 
-# TSWoW Library Search
+# Library Search
 
-The TSWoW Library Search is a tool for discovering community-created modules and libraries.
+Find and share community-created TSWoW modules.
 
-## [**Browse Libraries**](https://tswow-library-search.bold-term-1c95.workers.dev/)
+[**Browse the Library**](https://tswow-library-search.bold-term-1c95.workers.dev/){: .btn .btn-primary }
 
-## Making Your Module Discoverable
+---
 
-To have your module listed in the library search, you need to tag your GitHub repository and follow a few structural conventions.
+## Publishing Your Module
 
-### GitHub Topic
+To make your module discoverable in the library search, follow these two steps:
 
-Add the `tswow-module` topic to your GitHub repository. This is how the library search discovers modules:
+### 1. Add the GitHub Topic
+
+The library search finds modules by looking for repositories tagged with `tswow-module`:
 
 1. Go to your repository on GitHub
 2. Click the gear icon next to "About" in the right sidebar
@@ -25,13 +27,11 @@ Add the `tswow-module` topic to your GitHub repository. This is how the library 
 
 Your repository will be indexed automatically within a few hours.
 
-### Repository Structure
+### 2. Structure Your Repository
 
-The library search supports two repository structures:
+The search supports two layouts depending on whether you're publishing one module or several.
 
-#### Single Module Repository
-
-If your repository contains a single module, place the `datascripts/` or `livescripts/` folder at the repository root:
+**Single module** — Place your endpoint folders at the repository root:
 
 ```
 myname-mymodule/
@@ -41,48 +41,44 @@ myname-mymodule/
 └── README.md
 ```
 
-#### Multi-Module Repository
-
-If your repository contains multiple modules, each top-level folder (that isn't an excluded name) is treated as a separate module:
+**Multiple modules** — Each top-level folder becomes a separate module:
 
 ```
-module-library/
+my-module-collection/
 ├── myname-module-one/
 │   ├── datascripts/
 │   └── README.md
 ├── myname-module-two/
-│   ├── datascripts/
+│   ├── livescripts/
 │   └── README.md
 └── README.md
 ```
 
-**Note:** Certain common directory names are excluded from module detection: `.github`, `node_modules`, `docs`, `tests`, `src`, `lib`, `examples`, and similar development/tooling directories.
+Common directories like `.github`, `node_modules`, `docs`, `tests`, `src`, `lib`, and `examples` are automatically excluded from module detection.
 
-### README Files
+---
 
-Include README files to help users understand your modules:
+## Optimizing for Search
 
-- **Repository README.md** - Explain the purpose of your repository, installation instructions, and an overview of what modules are included.
-- **Per-module README.md** - For multi-module repositories, include a README.md in each module folder explaining what that specific module does.
+The library uses semantic search, which means it understands the meaning behind queries rather than just matching keywords.
 
-README content is indexed for search, so descriptive documentation helps users find your modules.
+### Indexed Content
 
-## How Search Works
+The search indexes the following from your repository:
 
-The library search uses semantic vector indexing to help users find relevant modules. It understands the meaning behind your query.
+| Content | Notes |
+|---------|-------|
+| Repository name | Use a descriptive name |
+| GitHub description | The "About" text on your repo |
+| GitHub topics | All topics, not just `tswow-module` |
+| README content | First ~5,000 characters |
 
-### What Gets Indexed
+### Tips for Discoverability
 
-The following content from your repository is indexed and used for search matching:
+**Write a strong GitHub description.** This appears prominently in search results. Be specific about what your module does.
 
-- Repository name
-- Repository description (from GitHub's "About" section)
-- GitHub topics
-- README content (first ~5,000 characters)
+**Add relevant topics.** Go beyond `tswow-module` — add topics like `custom-class`, `profession`, `dungeon`, `quests`, or whatever describes your content.
 
-### Tips for Better Discoverability
+**Document your README well.** Explain what the module does, what features it includes, and how to use it. Good documentation helps both search ranking and users evaluating your module.
 
-- Write a clear, descriptive repository description in GitHub's "About" section
-- Add relevant GitHub topics beyond just `tswow-module` (e.g., `custom-class`, `profession`, `dungeon`)
-- Include keywords and use cases in your README that describe what your module does
-- Use descriptive module folder names in multi-module repositories
+**Use descriptive folder names.** For multi-module repositories, clear folder names help users understand what each module contains at a glance.
